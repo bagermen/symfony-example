@@ -1,0 +1,23 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+index:
+  path: /
+  controller: 'App\Controller\MainController::index'
+
+countries_list:
+  path: /list/countries
+  controller: 'App\Controller\ListController::countries'
+  methods: GET
+
+statistic:
+  path: /statistic/{code}
+  controller: 'App\Controller\StatsController::statistics'
+  methods: GET
+  requirements:
+    country: '\D{1,3}'
+
+import:
+  resource: './routes/import/*.yaml'
+  prefix: '/import'
+  name_prefix: 'import_'

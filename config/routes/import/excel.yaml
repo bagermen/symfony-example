@@ -1,0 +1,9 @@
+get_excel:
+  path: /excel
+  controller: 'App\Controller\Import\ExcelController::getAction'
+  methods: GET
+
+post_excel:
+  path: /excel
+  controller: 'App\Controller\Import\ExcelController::postAction'
+  methods: POST

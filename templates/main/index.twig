@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="statistics_page">
+        <form class="statistics_page__chooser">
+            <div class="form-group">
+                <label for="countriesList">Select country</label>
+                <select class="form-control" id="countriesList" placeholder="">
+                </select>
+            </div>
+            <button type="button" class="btn btn-primary mb-2 disabled" disabled id="searchBtn">Get Statistics</button>
+        </form>
+        <div class="statistics_page__load">
+            <dl class="row">
+                <dt class="col-sm-3">Country Tax Amount:</dt>
+                <dd class="col-sm-9" id="countryTaxId">0</dd>
+                <dt class="col-sm-3">AVG Country Tax:</dt>
+                <dd class="col-sm-9" id="avgTaxRateId">0</dd>
+                <dt class="col-sm-3" >AVG State Tax:</dt>
+                <dd class="col-sm-9" id="avgAmountPerStateId">0</dd>
+            </dl>
+            <hr/>
+            <div class="data_upload">
+                <a type="button" class="btn btn-primary mb-2" id="getExcelFile" download href="{{ path('import_get_excel') }}">Get Excel file</a>
+                <form method="post" action="{{ path('import_post_excel') }}" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="excelFileUploadId">Upload Excel file</label>
+                        <input  name="fileexcel" type="file" class="form-control-file" id="excelFileUploadId"  accept=".xls,.xlsx"/>
+                    </div>
+                </form>
+                <a type="button" class="btn btn-primary mb-2" id="getCsvFile" download href="{{ path('import_get_csv') }}">Get Csv file</a>
+                <form method="post" action="{{ path('import_post_csv') }}" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="csvFileUploadId">Upload CSV file</label>
+                        <input name="filecsv" type="file" class="form-control-file" id="csvFileUploadId" accept=".csv"/>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="statistics_page__result">
+            <table id="statisticsPerStateId" class="statistics-result statistics-result__countries table">
+                <thead>
+                    <tr>
+                        <th>State</th>
+                        <th>Amount of Taxes</th>
+                        <th>Average amount of Taxes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    <script type="application/javascript">
+        require(['app']);
+    </script>
+{% endblock %}
+

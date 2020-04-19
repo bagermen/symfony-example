@@ -1,0 +1,9 @@
+get_csv:
+  path: /csv
+  controller: 'App\Controller\Import\CsvController::getAction'
+  methods: GET
+
+post_csv:
+  path: /csv
+  controller: 'App\Controller\Import\CsvController::postAction'
+  methods: POST
