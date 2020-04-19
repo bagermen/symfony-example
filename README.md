@@ -1,5 +1,5 @@
 
-# README
+# README (CODE EXAMPLE)
 This solution is based on Symfony Flex plugin with Symfony 5.
 
 Requirements:
